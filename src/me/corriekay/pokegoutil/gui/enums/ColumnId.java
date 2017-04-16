@@ -76,7 +76,12 @@ public enum ColumnId {
     EVOLVABLE("Evolvable"),
     DUELABILITYIV("Duel Ability IV"),
     GYMOFFENSEIV("Gym Offense IV"),
-    GYMDEFENSEIV("Gym Defense IV");
+    GYMDEFENSEIV("Gym Defense IV"),
+	// MSEW-BEGIN -- evolve costs
+	MSEW_CANDY_COST("Candy Cost To Evolve to Curr Level"),
+	MSEW_STARDUST_COST("Stardust Cost To Evolve to Curr Level")
+	// MSEW-END -- evolve costs
+;
 
     private static final Map<String, ColumnId> titleMap = new HashMap<>();
 

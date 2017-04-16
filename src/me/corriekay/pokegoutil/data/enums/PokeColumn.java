@@ -31,6 +31,11 @@ import me.corriekay.pokegoutil.utils.pokemon.PokemonUtils;
 import me.corriekay.pokegoutil.utils.windows.renderer.CellRendererHelper;
 import me.corriekay.pokegoutil.windows.PokemonTab;
 
+
+// MSEW-BEGIN -- evolve costs
+import me.corriekay.pokegoutil.utils.pokemon.PokemonPowerUpUtils;
+// MSEW-END 
+
 /**
  * A class that holds data relevant for each column.
  * Cleka 19.2.2017: renamed "name" to "heading",
@@ -427,7 +432,26 @@ public enum PokeColumn {
         public Object get(final Pokemon p) {
             return p.getId();
         }
-    };
+    },
+
+	// MSEW-BEGIN -- evolve costs
+	MSEW_CANDY_COST("Candy Cost", ColumnType.LONG) {
+        @Override
+        public Object get(final Pokemon p) {
+            return PokemonPowerUpUtils.getCandyCost(p);
+        }
+    },
+	MSEW_STARDUST_COST("Stardust Cost", ColumnType.LONG) {
+        @Override
+        public Object get(final Pokemon p) {
+            return PokemonPowerUpUtils.getStarDustCost(p);
+        }
+    }
+
+	// MSEW-END 
+
+
+;
 
     private static final String YES = "Yes";
     public final int id;
