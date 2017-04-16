@@ -372,10 +372,15 @@ public class PokemonTab extends JPanel {
        // MSEW-BEGIN -- don't transfer cool pokemon
             String hasCostume = poke.getPokemonDisplay() != null ? poke.getPokemonDisplay().getCostume().toString() :    "";
             
-
-
 			 double ivRating = PokemonCalculationUtils.ivRating(poke);
 
+
+			 String isShiny = poke.getPokemonDisplay() != null ? (poke.getPokemonDisplay().getShiny() ? "YES" : "")  : "";
+
+
+		//	System.out.println("hasCostume: " + hasCostume + " ivRating: " + ivRating + " isShiny:" + isShiny  );
+
+		//	hasCostume: COSTUME_UNSET ivRating: 0.4 isShiny:
 
             if (hasCostume != "COSTUME_UNSET") {
 				    System.out.println(String.format(
@@ -395,6 +400,14 @@ public class PokemonTab extends JPanel {
               }
             
 
+                         
+            if (isShiny == "YES") {
+				  	System.out.println(String.format(
+                    "%s is shiny, skipping.",
+                    PokemonUtils.getLocalPokeName(poke)));
+                    skipped.increment();
+                    return;
+				  }
 // MSEW-END
 
 
