@@ -63,6 +63,12 @@ import me.corriekay.pokegoutil.utils.ui.SearchBarTextField;
 import me.corriekay.pokegoutil.utils.windows.PokemonTable;
 import me.corriekay.pokegoutil.utils.windows.PokemonTableModel;
 
+
+// MSEW-BEGIN -- don't transfer cool pokemon
+import me.corriekay.pokegoutil.utils.pokemon.PokemonCalculationUtils;
+// MSEW-END 
+
+
 /**
  * The main PokemonTab.
  */
@@ -361,6 +367,27 @@ public class PokemonTab extends JPanel {
                 skipped.increment();
                 return;
             }
+
+
+       // MSEW-BEGIN -- don't transfer cool pokemon
+            String hasCostume = poke.getPokemonDisplay() != null ? poke.getPokemonDisplay().getCostume().toString() :    "";
+            
+
+
+            if (hasCostume != "COSTUME_UNSET") {
+				    System.out.println(String.format(
+                    "%s has an costume, skipping.",
+                    PokemonUtils.getLocalPokeName(poke)));
+                    skipped.increment();
+                    return;
+              }
+            
+           
+    
+// MSEW-END
+
+
+
             finalSelection.add(poke);
         });
         
