@@ -19,6 +19,11 @@ import me.corriekay.pokegoutil.utils.Utilities;
 import me.corriekay.pokegoutil.utils.helpers.TriConsumer;
 import me.corriekay.pokegoutil.utils.helpers.UnicodeHelper;
 
+// MSEW-BEGIN -- ability to auto set if the Moveset is the best offensive or defensive
+import me.corriekay.pokegoutil.utils.pokemon.PokemonMovesetUtils;
+// MSEW-END
+
+
 public class PokeHandler {
 
     private final ArrayList<Pokemon> mons;
@@ -366,13 +371,45 @@ public class PokeHandler {
         SWORD_UNICODE("Sword in Unicode symbol ⚔  to represent the best offensive moveset [1]") {
             @Override
             public String get(final Pokemon p) {
-                return UnicodeHelper.get("sword");
+
+
+			// MSEW-BEGIN -- ability to auto set if the Moveset is the best offensive or defensive
+			if( PokemonMovesetUtils.isBestOffensiveMoveset(p) == true )
+			{
+			    //System.out.println("--> SETTING SWORD " );
+			    return "O";
+			}
+
+			else
+			{
+		    	//System.out.println("--> SETTING NOTHING " );
+                return "";
+			}
+			// MSEW-END
+            
+			
+			
+			//    return UnicodeHelper.get("sword");
             }
         },
         SHIELD_UNICODE("Shield in Unicode symbol ⛨  to represent the best defensive moveset [1]") {
             @Override
             public String get(final Pokemon p) {
-                return UnicodeHelper.get("shield");
+
+			// MSEW-BEGIN -- ability to auto set if the Moveset is the best offensive or defensive
+			if( PokemonMovesetUtils.isBestDefensiveMoveset(p) == true )
+			{
+			    return "D";
+			}
+
+			else
+			{
+                return "";
+			}
+			// MSEW-END
+
+
+              //  return UnicodeHelper.get("shield");
             }
         },
         ID("Pokédex Id [3]") {
