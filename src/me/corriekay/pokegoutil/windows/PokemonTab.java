@@ -374,6 +374,9 @@ public class PokemonTab extends JPanel {
             
 
 
+			 double ivRating = PokemonCalculationUtils.ivRating(poke);
+
+
             if (hasCostume != "COSTUME_UNSET") {
 				    System.out.println(String.format(
                     "%s has an costume, skipping.",
@@ -383,7 +386,15 @@ public class PokemonTab extends JPanel {
               }
             
            
-    
+            if (ivRating > 0.90) {
+				  	System.out.println(String.format(
+                    "%s has have IVs above 90, skipping.",
+                    PokemonUtils.getLocalPokeName(poke)));
+                    skipped.increment();
+                    return;
+              }
+            
+
 // MSEW-END
 
 
