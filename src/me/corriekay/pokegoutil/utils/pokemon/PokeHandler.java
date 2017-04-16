@@ -329,13 +329,29 @@ public class PokeHandler {
         MOVE_1_RATING("Rating for Move 1 (Percentage of max possible) in two digits (XX for 100%)") {
             @Override
             public String get(final Pokemon p) {
-                return padPercentage((double) PokeColumn.MOVE_1_RATING.get(p));
+			// MSEW-BEGIN -- naming pokemon since unicode broken on ios
+			if( "XX".equalsIgnoreCase(padPercentage((double) PokeColumn.MOVE_1_RATING.get(p)) ))
+			{
+				return "+";
+			}
+
+			return "-";
+			// MSEW-END 
+ //               return padPercentage((double) PokeColumn.MOVE_1_RATING.get(p));
             }
         },
         MOVE_2_RATING("Rating for Move 2 (Percentage of max possible) in two digits (XX for 100%)") {
             @Override
             public String get(final Pokemon p) {
-                return padPercentage((double) PokeColumn.MOVE_2_RATING.get(p));
+			// MSEW-BEGIN -- naming pokemon since unicode broken on ios
+			if( "XX".equalsIgnoreCase(padPercentage((double) PokeColumn.MOVE_2_RATING.get(p)) ))
+			{
+				return "+";
+			}
+
+			return "-";
+			// MSEW-END 
+         //       return padPercentage((double) PokeColumn.MOVE_2_RATING.get(p));
             }
         },
         TYPE_1("Pokémon Type 1 abbreviated (Ghost = Gh) [2]") {
