@@ -66,6 +66,7 @@ import me.corriekay.pokegoutil.utils.windows.PokemonTableModel;
 
 // MSEW-BEGIN -- don't transfer cool pokemon
 import me.corriekay.pokegoutil.utils.pokemon.PokemonCalculationUtils;
+import me.corriekay.pokegoutil.utils.pokemon.PokemonMovesetUtils;
 // MSEW-END 
 
 
@@ -408,6 +409,26 @@ public class PokemonTab extends JPanel {
                     skipped.increment();
                     return;
 				  }
+
+
+			if( PokemonMovesetUtils.isBestOffensiveMoveset(poke) == true ) {
+				  	System.out.println(String.format(
+                    "%s is best Offensive Moveset, skipping.",
+                    PokemonUtils.getLocalPokeName(poke)));
+                    skipped.increment();
+                    return;
+				  }
+
+		     if( PokemonMovesetUtils.isBestDefensiveMoveset(poke) == true ) {
+				  	System.out.println(String.format(
+                    "%s is best Defensive Moveset, skipping.",
+                    PokemonUtils.getLocalPokeName(poke)));
+                    skipped.increment();
+                    return;
+				  }
+
+		
+
 // MSEW-END
 
 
